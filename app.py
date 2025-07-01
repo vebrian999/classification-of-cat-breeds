@@ -16,6 +16,7 @@ try:
 except Exception as e:
     print(f"Error loading model: {e}")
 
+label_encoder = LabelEncoder()  # <-- Tambahkan baris ini
 label_encoder.classes_ = np.load('classes_new.npy')
 
 def preprocess_image(img_path):
