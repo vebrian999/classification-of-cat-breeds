@@ -43,7 +43,7 @@ val_generator = val_datagen.flow_from_directory(
 )
 
 # Simpan label encoder (kelas)
-np.save('classes_new1.npy', list(train_generator.class_indices.keys()))
+np.save('classes_new.npy', list(train_generator.class_indices.keys()))
 
 # Transfer Learning dengan MobileNetV2
 base_model = MobileNetV2(weights='imagenet', include_top=False, input_shape=(224, 224, 3))
