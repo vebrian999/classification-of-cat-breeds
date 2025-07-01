@@ -10,8 +10,12 @@ app = Flask(__name__)
 app.secret_key = 'supersecretkey'
 
 # Load model and label encoder
-model = load_model('saved_model_new.keras')
-label_encoder = LabelEncoder()
+try:
+    model = load_model('saved_model_new.keras')
+    print("Model loaded successfully")
+except Exception as e:
+    print(f"Error loading model: {e}")
+
 label_encoder.classes_ = np.load('classes_new.npy')
 
 def preprocess_image(img_path):
@@ -69,3 +73,4 @@ if __name__ == "__main__":
     import os
     port = int(os.environ.get("PORT", 5000))
     app.run(host="0.0.0.0", port=port)
+print("=== Flask app started ===")
